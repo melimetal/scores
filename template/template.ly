@@ -36,7 +36,7 @@
 
     % NOTE: https://lilypond.org/doc/v2.23/Documentation/notation/music
     \once\override Staff.TimeSignature.stencil = #ly:text-interface::print
-    \once\override Staff.TimeSignature.text = \markup{\fontsize #1 \compound-meter #'(4 . 4) }
+    \once\override Staff.TimeSignature.text = \markup{ \fontsize #1 \compound-meter #'(4 . 4) }
     \once\override Staff.TimeSignature.extra-offset = #'(0 . 0)
     \time 4/4
     \cadenzaOn
