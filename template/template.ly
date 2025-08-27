@@ -28,24 +28,40 @@
   system-system-spacing.basic-distance = 16
 }
 
+% Colours.
+neutralSubtle = "#BABABA"
+neutralSubtleAlt = "#A6A6A6"
+neutralText = "#2E2E2E"
+neutralTextStrong = "#141414"
+
 \score {
   \new Staff {
-    % QOL overrides.
+
+    \override Staff.StaffSymbol.color = \neutralSubtle
+    \override Staff.TimeSignature.color = \neutralTextStrong
+    \override Staff.Clef.color = \neutralText
+    \override Voice.NoteHead.color = \neutralText
+    \override Voice.Stem.color = \neutralText
+    \override Staff.BarLine.color = \neutralSubtleAlt
     \once\override Score.MetronomeMark.padding = #4
     \tempo "Larghetto" 4 = 60
-
     % NOTE: https://lilypond.org/doc/v2.23/Documentation/notation/music
     \once\override Staff.TimeSignature.stencil = #ly:text-interface::print
     \once\override Staff.TimeSignature.text = \markup{ \fontsize #1 \compound-meter #'(4 . 4) }
     \once\override Staff.TimeSignature.extra-offset = #'(0 . 0)
     \time 4/4
+
     \cadenzaOn
 
     % Music goes here.
-    \clef "bass" {
-      a b c d
-      \break
-      e f g a'
+    \relative c {
+      \clef "bass" {
+        c d e f
+        \break
+        g a b c
+        \break
+        d e f g
+      }
     }
   }
 }
